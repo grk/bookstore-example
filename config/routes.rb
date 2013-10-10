@@ -1,6 +1,9 @@
 Bookstore::Application.routes.draw do
   resources :books, only: :index do
-    post :import, on: :collection
+    collection do
+      post :import
+      get :autocomplete
+    end
   end
 
   root to: 'books#index'

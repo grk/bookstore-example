@@ -6,6 +6,9 @@ class BooksController < ApplicationController
       @books = Book.all.page params[:page]
     end
   end
+
+  def autocomplete
+    render json: Book.search(params[:query], autocomplete: true, limit: 10).map(&:title)
   end
 
   def import
