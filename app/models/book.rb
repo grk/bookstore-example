@@ -2,6 +2,8 @@ class Book < ActiveRecord::Base
   has_and_belongs_to_many :authors
   has_and_belongs_to_many :subjects
 
+  searchkick
+
   def self.import(olid)
     client = Openlibrary::Client.new
     book_data = client.book(olid)
