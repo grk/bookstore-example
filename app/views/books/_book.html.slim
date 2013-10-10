@@ -1,0 +1,8 @@
+.media
+  .pull-left.book-cover
+    = image_tag book.coverimage, class: "media-object", width: "100px"
+  .media-body
+    h4.media-heading = book.title
+    .authors = book.authors.join(", ")
+    .publish_date = book.publish_date
+    = "#{book.number_of_pages} pages"

@@ -1,0 +1,32 @@
+doctype html
+html
+  head
+    title Bookstore
+    = stylesheet_link_tag "//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = javascript_include_tag "//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"
+    = csrf_meta_tags
+
+body
+  nav.navbar.navbar-default.navbar-static-top
+    .container
+      .navbar-header
+        button.navbar-toggle data-toggle="collapse" data-target=".main-navbar-collapse"
+          span.sr-only Toggle navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        = link_to "Bookstore", root_path, class: "navbar-brand"
+      .collapse.navbar-collapse.main-navbar-collapse
+        ul.nav.navbar-nav
+          li class=active_for("books")
+            = link_to "Books", books_path
+
+  .container
+    - flash.each do |type, message|
+      .alert.fade.in class=bootstrap_class_for(type)
+        button.close data-dismiss="alert" aria-hidden="true" &times;
+        = message
+
+    = yield
