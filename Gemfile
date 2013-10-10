@@ -18,3 +18,5 @@ gem 'puma'
 gem 'shelly-dependencies'
 
 gem 'openlibrary'
+
+gem 'searchkick'

@@ -1,6 +1,10 @@
 class BooksController < ApplicationController
   def index
-    @books = Book.all.page params[:page]
+    if params[:query].present?
+      @books = Book.search(params[:query], page: params[:page], per_page: 5)
+    else
+      @books = Book.all.page params[:page]
+    end
   end
 
   def import

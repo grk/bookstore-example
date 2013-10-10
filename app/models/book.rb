@@ -4,6 +4,8 @@ class Book < ActiveRecord::Base
 
   paginates_per 5
 
+  searchkick
+
   def self.import(olid)
     client = Openlibrary::Client.new
     book_data = client.book(olid)
