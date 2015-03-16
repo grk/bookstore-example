@@ -10,7 +10,7 @@ class Book < ActiveRecord::Base
     book = Book.new
     book.title = book_data.title
     book.number_of_pages = book_data.number_of_pages
-    book.coverimage = "http://covers.openlibrary.org/b/id/#{book_data.covers.first}-M.jpg"
+    book.coverimage = "http://covers.openlibrary.org/b/id/#{book_data.covers.first}-M.jpg" unless book_data.covers.nil?
     book.publish_date = book_data.publish_date
     book.save!
     book_data.authors.each do |author_data|
